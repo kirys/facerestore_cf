@@ -20,7 +20,8 @@ from facelib.detection.yolov5face.utils.general import (
 try:
     version_str = torch.__version__.split('+')[0]
     major, minor, patch = map(int, version_str.split('.'))
-    IS_HIGH_VERSION = (major, minor, patch) >= (1, 9, 0)
+    #IS_HIGH_VERSION = (major, minor, patch) >= (1, 9, 0)
+    IS_HIGH_VERSION = True # Woraround to allow it to load into last version of comfy
 except ValueError:
     # Handle the case of a development version here
     IS_HIGH_VERSION = False
@@ -145,3 +146,4 @@ class YoloDetector:
 
     def __call__(self, *args):
         return self.predict(*args)
+
